@@ -1,358 +1,291 @@
-# 🎨 Figma Design Token Sync Tool - Complete Implementation
+# figRoots - Project Summary
 
-## ✅ What's Been Created
+## Overview
 
-I've successfully built a **bi-directional design token sync tool** for your Techtonic project. Here's everything that's been implemented:
+**figRoots** is a Figma plugin for bi-directional design token synchronization between Figma's Local Variables and a visual management interface. Built with React, TypeScript, and Tailwind CSS.
 
-### 📦 Project Structure
-
-```
-projects/techtonic/brands/figRoots/
-├── src/
-│   ├── main.tsx                      # React entry point
-│   ├── App.tsx                       # Main application component
-│   ├── index.css                     # Global styles with Tailwind
-│   ├── types.ts                      # TypeScript type definitions
-│   │
-│   ├── services/
-│   │   └── figmaService.ts          # Figma API service (mock + real)
-│   │
-│   └── components/
-│       ├── Header.tsx               # App header with sync button
-│       ├── Sidebar.tsx              # Collection navigation sidebar
-│       ├── TokenGrid.tsx            # Token grid layout manager
-│       ├── EditableInput.tsx        # Reusable inline input component
-│       ├── ColorTokenCard.tsx       # Color token display/edit
-│       ├── SpacingTokenCard.tsx     # Spacing token display/edit
-│       ├── TypographyTokenCard.tsx  # Typography token display/edit
-│       └── RadiusTokenCard.tsx      # Border radius token display/edit
-│
-├── index.html                        # HTML entry point
-├── vite.config.ts                   # Vite configuration
-├── tsconfig.json                    # TypeScript configuration
-├── tailwind.config.js               # Tailwind CSS configuration
-├── postcss.config.js                # PostCSS configuration
-├── package.json                     # Dependencies and scripts
-├── .gitignore                       # Git ignore rules
-│
-├── README.md                        # Original project description
-├── GUIDE.md                         # Quick start guide
-├── FIGMA_INTEGRATION.md            # Figma API integration guide
-├── ARCHITECTURE.md                 # Technical architecture documentation
-└── metadata.json                    # Project metadata
-```
-
-## 🎯 Key Features Implemented
-
-### 1. **Visual Token Management**
-
-- Beautiful card-based UI for each token type
-- Real-time visual previews
-- Color swatches, spacing boxes, typography samples, radius previews
-
-### 2. **Multiple Token Collections**
-
-- ✅ Colors (with RGB/HEX editing)
-- ✅ Spacing (with px/rem/em units)
-- ✅ Typography (font, size, weight, line height, letter spacing)
-- ✅ Border Radius (with px/rem/% units)
-
-### 3. **Inline Editing**
-
-- Click any field to edit
-- Press Enter to save, Escape to cancel
-- Immediate visual feedback
-- Optimistic UI updates
-
-### 4. **Bi-directional Sync**
-
-- "Sync Now" button to fetch from Figma
-- Automatic sync on token updates
-- Create new tokens
-- Delete existing tokens
-- Ready for real Figma API integration
-
-### 5. **Modern UI/UX**
-
-- Dark theme with Tailwind CSS
-- Professional slate color scheme
-- Responsive grid layout
-- Smooth animations and transitions
-- Clear visual hierarchy
-
-### 6. **Developer Experience**
-
-- TypeScript for type safety
-- Component-based architecture
-- Clear separation of concerns
-- Extensive documentation
-- Easy to extend and customize
-
-## 🚀 How to Use
-
-### Start the Application
-
-```bash
-# Navigate to project
-cd /Users/jessesmith/Developer/projects/techtonic/brands/figRoots
-
-# Install dependencies (already done!)
-npm install
-
-# Start development server
-npx vite
-
-# Or use the script
-npm run dev
-```
-
-**The app is now running at:** http://localhost:3000/ 🎉
-
-### Basic Workflow
-
-1. **Browse Collections** - Click collection names in sidebar (Colors, Spacing, etc.)
-2. **View Tokens** - See all tokens in that collection as visual cards
-3. **Edit Tokens** - Click any value to edit it inline
-4. **Add Tokens** - Click "Add Token" button
-5. **Delete Tokens** - Click trash icon on any card
-6. **Sync** - Click "Sync Now" to refresh from Figma
-
-## 📖 Documentation Provided
-
-### 1. **GUIDE.md** - Quick Start Guide
-
-- Installation instructions
-- How to use each feature
-- Token type explanations
-- Export/import patterns
-- Troubleshooting tips
-
-### 2. **FIGMA_INTEGRATION.md** - API Integration
-
-- Figma REST API endpoints
-- Authentication setup
-- Code examples for real API
-- Value transformations
-- Security considerations
-
-### 3. **ARCHITECTURE.md** - Technical Deep Dive
-
-- System architecture diagram
-- Data flow patterns
-- Component hierarchy
-- State management strategy
-- Extensibility points
-
-## 🔧 Current Implementation Status
-
-### ✅ Completed
-
-- [x] React + TypeScript setup
-- [x] Tailwind CSS styling
-- [x] Component architecture
-- [x] Mock data service
-- [x] All token type cards
-- [x] Inline editing functionality
-- [x] Create/Read/Update/Delete operations
-- [x] Responsive UI
-- [x] Type definitions
-- [x] Documentation
-
-### 🚧 Ready for Integration
-
-- [ ] Real Figma API connection (code structure ready, just needs credentials)
-- [ ] Environment variables setup
-- [ ] API error handling enhancement
-- [ ] Token aliasing (references)
-- [ ] Export functionality (CSS, SCSS, JSON)
-- [ ] Import functionality
-- [ ] Version history
-- [ ] Multi-user collaboration
-
-## 🎨 Token Types Supported
-
-### Color Tokens
-
-- **Preview**: Color swatch
-- **Editable**: HEX, R, G, B, A values
-- **Use cases**: Brand colors, semantic colors, backgrounds
-
-### Spacing Tokens
-
-- **Preview**: Visual box showing size
-- **Editable**: Value + unit (px, rem, em)
-- **Use cases**: Margins, padding, gaps
-
-### Typography Tokens
-
-- **Preview**: Actual font rendering ("Aa")
-- **Editable**: Font family, size, weight, line height, letter spacing
-- **Use cases**: Headings, body text, captions
-
-### Border Radius Tokens
-
-- **Preview**: Box with rounded corners
-- **Editable**: Value + unit (px, rem, %)
-- **Use cases**: Button corners, card radius
-
-## 🔌 Next Steps for Figma Integration
-
-### To connect to real Figma API:
-
-1. **Get credentials**:
-
-   - Figma Personal Access Token
-   - Your Figma file key
-
-2. **Create `.env` file**:
-
-   ```bash
-   VITE_FIGMA_TOKEN=your_token_here
-   VITE_FIGMA_FILE_KEY=your_file_key_here
-   ```
-
-3. **Uncomment real API code** in `src/services/figmaService.ts`
-
-4. **Test the integration** with read operations first
-
-See `FIGMA_INTEGRATION.md` for complete instructions!
-
-## 🎯 Design Decisions
-
-### Why This Architecture?
-
-1. **Service Layer Pattern**: Easy to swap mock for real API
-2. **Component Composition**: Each token type is independent
-3. **Type Safety**: TypeScript catches errors at compile time
-4. **Optimistic Updates**: UI feels instant and responsive
-5. **Extensibility**: Easy to add new token types
-
-### Technology Choices
-
-- **React**: Component-based, great ecosystem
-- **TypeScript**: Type safety, better DX
-- **Vite**: Fast dev server, modern build tool
-- **Tailwind CSS**: Rapid UI development, no CSS files
-
-## 📊 Performance Considerations
-
-Current implementation is optimized for:
-
-- Small to medium token collections (50-200 tokens)
-- Instant UI updates with optimistic rendering
-- Fast development iteration
-
-Future optimizations available for:
-
-- Large collections (1000+ tokens) - virtual scrolling
-- Rapid edits - debouncing
-- Multiple users - real-time sync
-
-## 🛡️ Production Checklist
-
-When moving to production:
-
-- [ ] Set up environment variables properly
-- [ ] Add authentication
-- [ ] Implement rate limiting
-- [ ] Add error tracking (Sentry, etc.)
-- [ ] Set up CI/CD pipeline
-- [ ] Add analytics
-- [ ] Implement caching
-- [ ] Add loading states
-- [ ] Write tests
-
-## 📚 Resources & References
-
-- **Figma Variables API**: https://www.figma.com/developers/api#variables
-- **Design Tokens Spec**: https://design-tokens.github.io/community-group/
-- **React Docs**: https://react.dev/
-- **Tailwind CSS**: https://tailwindcss.com/
-- **TypeScript**: https://www.typescriptlang.org/
-
-## 🎉 What You Can Do Now
-
-1. ✅ **View the app** - Go to http://localhost:3000/
-2. ✅ **Explore collections** - Browse colors, spacing, typography, radius
-3. ✅ **Edit tokens** - Click and edit any value
-4. ✅ **See real-time updates** - Watch changes happen instantly
-5. ✅ **Add/delete tokens** - Full CRUD operations
-6. ✅ **Read documentation** - Three comprehensive guides provided
-
-## 🚀 Future Enhancements
-
-Easy to add:
-
-- Shadow tokens
-- Gradient tokens
-- Animation tokens
-- Grid tokens
-
-Integration possibilities:
-
-- VS Code extension
-- Figma plugin
-- CLI tool
-- GitHub Actions workflow
-
-Export formats:
-
-- CSS Variables
-- SCSS Variables
-- JSON
-- YAML
-- JavaScript/TypeScript
-
-## 💡 Tips for Customization
-
-### Add a New Token Type
-
-1. Define in `types.ts`
-2. Add mock data in `figmaService.ts`
-3. Create `[Type]TokenCard.tsx` component
-4. Add case in `TokenGrid.tsx`
-
-### Change Color Scheme
-
-Edit `tailwind.config.js`:
-
-```javascript
-theme: {
-  extend: {
-    colors: {
-      primary: '#your-color',
-      // ...
-    }
-  }
-}
-```
-
-### Add Export Feature
-
-Create `exportService.ts`:
-
-```typescript
-export function exportToCSS(collection: TokenCollection) {
-  // Your export logic
-}
-```
-
-## 🎊 Summary
-
-You now have a **fully functional, beautifully designed, bi-directional design token sync tool** ready to use!
-
-The tool:
-
-- ✨ Works out of the box with mock data
-- 🔌 Ready for real Figma API integration
-- 📖 Comprehensively documented
-- 🎨 Professionally designed
-- 🚀 Easy to extend and customize
-- 💪 Type-safe and maintainable
-
-**Enjoy managing your design tokens visually!** 🎨✨
+**Repository**: [techtonic-living/figRoots](https://github.com/techtonic-living/figRoots)  
+**Branch**: `figRoots`
 
 ---
 
-**Built with ❤️ for Techtonic**
-_Location: `/Users/jessesmith/Developer/projects/techtonic/brands/figRoots`_
+## What's Been Built
+
+### Core Application
+
+- ✅ React 18 + TypeScript 5 + Vite 4 setup
+- ✅ Tailwind CSS 3 dark theme UI
+- ✅ Component-based architecture
+- ✅ Mock service layer for development
+- ✅ Complete documentation suite
+
+### Token Types Supported (4)
+
+| Type | Features | Visual Preview |
+|------|----------|----------------|
+| **Color** | HEX & RGB editing | Color swatch |
+| **Spacing** | px, rem, em units | Size box |
+| **Typography** | Font, size, weight, line height, letter spacing | Rendered text |
+| **Border Radius** | px, rem, % units | Rounded corners |
+
+### UI Components (9)
+
+1. `Header.tsx` - App header with sync button
+2. `Sidebar.tsx` - Collection navigation
+3. `TokenGrid.tsx` - Token grid layout
+4. `EditableInput.tsx` - Reusable inline input
+5. `ColorTokenCard.tsx` - Color token card
+6. `SpacingTokenCard.tsx` - Spacing token card
+7. `TypographyTokenCard.tsx` - Typography token card
+8. `RadiusTokenCard.tsx` - Radius token card
+9. `App.tsx` - Main application orchestrator
+
+### Key Features
+
+- **Visual token management** with real-time previews
+- **Inline editing** (click to edit, Enter to save, Esc to cancel)
+- **Optimistic UI updates** for immediate feedback
+- **Sync functionality** (ready for Figma API integration)
+- **Multiple collections** with sidebar navigation
+- **Responsive grid layout** with professional styling
+
+---
+
+## Project Structure
+
+```text
+figRoots-repo/
+├── src/
+│   ├── main.tsx                    # React entry point
+│   ├── App.tsx                     # Main app component
+│   ├── types.ts                    # TypeScript types
+│   ├── index.css                   # Global styles
+│   ├── components/                 # UI components (9 files)
+│   └── services/
+│       └── figmaService.ts         # Figma API service layer
+│
+├── docs/devdocs/
+│   ├── README.md                   # Figma MCP guide
+│   ├── ROADMAP.md                  # Development roadmap
+│   └── PDR.md                      # Product design rationale
+│
+├── Configuration Files
+│   ├── vite.config.ts              # Vite configuration
+│   ├── tsconfig.json               # TypeScript config
+│   ├── tailwind.config.js          # Tailwind config
+│   └── package.json                # Dependencies
+│
+└── Documentation
+    ├── README.md                   # Project overview
+    ├── GUIDE.md                    # Quick start guide
+    ├── ARCHITECTURE.md             # Technical architecture
+    ├── FIGMA_INTEGRATION.md        # Figma API guide
+    ├── MCP_STATUS.md               # MCP setup status
+    └── SUMMARY.md                  # This file
+```
+
+---
+
+## Getting Started
+
+### Installation
+
+```bash
+# Navigate to project
+cd /Users/jessesmith/Developer/projects/techtonic/brands/figRoots-repo
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+**App runs at**: `http://localhost:3000`
+
+### Basic Usage
+
+1. **Browse collections** - Click collection names in sidebar
+2. **View tokens** - See visual cards for each token
+3. **Edit inline** - Click any value to edit
+4. **Sync** - Click "Sync Now" to refresh (currently mock data)
+
+---
+
+## Current Implementation Status
+
+### ✅ Phase 1: Foundation (Complete)
+
+- React + TypeScript + Vite setup
+- Component architecture
+- Mock service layer
+- Visual token cards for 4 types
+- Inline editing functionality
+- Dark theme UI
+- Documentation suite
+
+### 🚧 Phase 2: Plugin Integration (Next)
+
+See [ROADMAP.md](./docs/devdocs/ROADMAP.md) for detailed plan:
+
+1. Build plugin boilerplate
+2. Implement read-only sync
+3. Implement write sync (MVP complete)
+4. Add enhancements
+
+---
+
+## Documentation Guide
+
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| **README.md** | Project overview and quick reference | Everyone |
+| **GUIDE.md** | Usage instructions and how-tos | End users |
+| **ARCHITECTURE.md** | Technical deep dive | Developers |
+| **FIGMA_INTEGRATION.md** | Figma API integration details | Developers |
+| **MCP_STATUS.md** | MCP configuration status | Developers |
+| **docs/devdocs/ROADMAP.md** | Development strategy | Developers |
+| **docs/devdocs/PDR.md** | Product design rationale | Product/Dev |
+| **docs/devdocs/README.md** | Figma MCP server guide | Developers |
+
+---
+
+## Technical Stack
+
+| Category | Technology | Version |
+|----------|-----------|---------|
+| **Framework** | React | 18.2.0 |
+| **Language** | TypeScript | 5.0.2 |
+| **Build Tool** | Vite | 4.4.5 |
+| **Styling** | Tailwind CSS | 3.3.3 |
+| **Package Manager** | npm | Latest |
+
+---
+
+## Key Design Decisions
+
+### 1. Mock Service Layer First
+
+Built `figmaService.ts` as mock to enable rapid UI development without Figma dependency. This allows:
+
+- Fast iteration on UI/UX
+- Component testing in isolation
+- Demonstration of functionality
+- Foundation for real API integration
+
+### 2. Plugin Integration Priority
+
+Strategic decision to implement Figma plugin integration **before** adding enhancements. Rationale:
+
+- Core value is bi-directional sync
+- Real API informs better features
+- Mitigates technical risks early
+- Delivers MVP faster
+
+See [PDR.md](./docs/devdocs/PDR.md) for detailed rationale.
+
+### 3. Component-Based Architecture
+
+- Reusable components (`EditableInput`)
+- Token-type-specific cards
+- Clear separation of concerns
+- Easy to extend with new token types
+
+### 4. TypeScript Throughout
+
+- Type safety for all data structures
+- Better IDE support
+- Fewer runtime errors
+- Self-documenting code
+
+---
+
+## Next Steps
+
+### Immediate (Phase 2.1)
+
+1. Set up Figma plugin boilerplate
+   - Create `manifest.json`
+   - Create `code.ts` plugin file
+   - Configure build for plugin environment
+
+2. Establish UI ↔ Plugin communication
+   - Implement `postMessage` bridge
+   - Test two-way messaging
+
+### Short-term (Phase 2.2)
+
+3. Implement read-only sync
+   - Connect to real Figma Variables API
+   - Display actual Figma data in UI
+
+### Medium-term (Phase 2.3)
+
+4. Implement write sync
+   - Edit tokens in UI
+   - Sync changes to Figma
+   - **MVP Complete**
+
+### Long-term (Phase 3)
+
+5. Add enhancements
+   - Token aliasing
+   - Additional token types
+   - Export functionality
+   - Advanced features
+
+**See [ROADMAP.md](./docs/devdocs/ROADMAP.md) for timeline and details.**
+
+---
+
+## MCP Integration Status
+
+The project includes Model Context Protocol (MCP) configuration:
+
+- ✅ Figma MCP Server (remote)
+- ✅ Chrome DevTools MCP
+- ✅ GitHub MCP
+- ✅ Filesystem MCP
+- ✅ Microsoft Docs MCP
+
+See [MCP_STATUS.md](./MCP_STATUS.md) for configuration details.
+
+---
+
+## Resources
+
+### Internal Documentation
+
+- [README.md](./README.md) - Start here
+- [GUIDE.md](./GUIDE.md) - Usage guide
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical docs
+- [ROADMAP.md](./docs/devdocs/ROADMAP.md) - Development plan
+
+### External Resources
+
+- [Figma Plugin API](https://www.figma.com/plugin-docs/)
+- [Figma Variables API](https://www.figma.com/plugin-docs/api/properties/figma-variables/)
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+
+---
+
+## Project Timeline
+
+| Milestone | Status | Duration |
+|-----------|--------|----------|
+| Foundation & UI | ✅ Complete | Completed |
+| Repository Setup | ✅ Complete | 1 day |
+| Plugin Boilerplate | � Planned | 2-3 days |
+| Read-Only Sync | 📋 Planned | 3-5 days |
+| Write Sync (MVP) | 📋 Planned | 5-7 days |
+| Enhancements | 📋 Planned | Ongoing |
+
+**Estimated time to MVP**: 10-15 days of focused development
+
+---
+
+## License
+
+Proprietary - Techtonic Living © 2025

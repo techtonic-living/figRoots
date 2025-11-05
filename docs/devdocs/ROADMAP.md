@@ -1,35 +1,219 @@
-# Project Roadmap
+# Development Roadmap
 
-1. The Core Value Is the Sync
-   The entire premise and value of your application is the "bi-directional sync with Figma." Without it, the tool is a beautifully designed but ultimately non-functional prototype. All other features—creating tokens, deleting tokens, exporting—are secondary to this core promise. Proving that you can reliably read from and write to the Figma document is Milestone #1.
-2. Mitigating Technical Risk
-   Your figmaService.ts is a mock. It's an educated guess about how the real Figma API behaves. There are several risks you'll only uncover by working with the real thing:
-   API Discrepancies: The real Figma API might have slightly different data structures, naming conventions, or limitations compared to your mock. Building new features on a potentially inaccurate mock could lead to significant rework later.
-   Performance: How fast is the real API? Fetching hundreds of variables might be slow. You may need to add loading states or optimize how you fetch data. You can't know this without the real integration.
-   Permissions & Edge Cases: The real API involves user permissions. What happens if the user doesn't have edit rights? What if there are conflicting variable modes? These are real-world complexities your mock service ignores.
-   Plugin Communication: The communication between the plugin's UI (your React app in an <iframe>) and the plugin's main code (which has access to the figma API) happens via postMessage. This asynchronous bridge has its own set of challenges that need to be solved first.
-3. Real Data Informs Better Features
-   Once you have a real data connection, you can design better, more robust features.
-   You might discover that the Figma API provides extra metadata (like where a variable is used) that could inspire a powerful new feature.
-   Conversely, you might find that a planned feature (like token aliasing) is much more complex to implement with the real API, allowing you to re-prioritize it.
-   Building features with real, live data from Figma ensures that what you're building is practical and grounded in reality.
-   A Recommended Strategic Roadmap
-   Here is a step-by-step plan for moving forward:
-   Step 1: Build the Bridge (Plugin Boilerplate).
-   Set up the basic Figma plugin structure with a manifest.json and a code.ts file.
-   Your goal is to get your React application to load inside the Figma plugin window.
-   Establish the basic postMessage communication. Make the UI send a "hello" message to code.ts and have code.ts log it and send a "world" message back.
-   Step 2: Implement Read-Only Sync.
-   Modify figmaService.ts. Instead of returning mock data, have getVariableCollections send a message to code.ts.
-   In code.ts, listen for that message, call the real figma.variables.getLocalVariableCollectionsAsync(), and send the result back to the UI.
-   Update your UI to correctly display the real data. This is a huge milestone. Your app is now a real Figma data viewer.
-   Step 3: Implement Write Sync (Complete the MVP).
-   Modify the updateVariable function in your service to send the updated token data to code.ts.
-   In code.ts, write the logic to find the corresponding Figma variable by its ID and update its value.
-   Test this thoroughly. Once you can edit a token in your UI and see the change reflected in Figma's native "Local Variables" panel, you have a true Minimum Viable Product (MVP).
-   Step 4: Now, Add Enhancements.
-   With the core sync functionality proven and stable, you can now confidently add all the other features on your roadmap:
-   Create/Delete Tokens
-   Token Aliasing
-   Export to CSS/JSON
-   Advanced filtering and searching
+## Strategic Priority: Plugin Integration First
+
+### Why Plugin Integration Comes First
+
+The entire value proposition of figRoots is **bi-directional synchronization with Figma**. Without it, the tool is merely a beautifully designed prototype. All other features—creating tokens, deleting tokens, exporting—are secondary to this core promise.
+
+**Proving that we can reliably read from and write to the Figma document is Milestone #1.**
+
+### Key Risks Mitigated by Early Integration
+
+#### 1. API Discrepancies
+
+The current `figmaService.ts` is a mock—an educated guess about how the real Figma API behaves. Building features on a potentially inaccurate mock could lead to significant rework later.
+
+- Real Figma API may have different data structures
+- Naming conventions might differ from our assumptions
+- API limitations we haven't anticipated
+
+#### 2. Performance Considerations
+
+- How fast is the real API?
+- Can we fetch hundreds of variables efficiently?
+- Do we need loading states or data optimization?
+- Only real integration reveals these answers
+
+#### 3. Permissions & Edge Cases
+
+- User doesn't have edit rights
+- Conflicting variable modes
+- File-level constraints
+- Real-world complexities our mock ignores
+
+#### 4. Plugin Communication
+
+The communication between the plugin's UI (React app in `<iframe>`) and the plugin's main code (with access to `figma.*` API) happens via `postMessage`. This asynchronous bridge has its own challenges that must be solved first.
+
+### Real Data Informs Better Features
+
+Once we have a real data connection, we can:
+
+- Discover extra metadata that inspires new features
+- Find that planned features are more/less complex than anticipated
+- Design with practical, grounded requirements
+- Build on reality, not assumptions
+
+---
+
+## Implementation Roadmap
+
+### Phase 1: Build the Bridge (Plugin Boilerplate)
+
+**Goal**: Get React application running inside Figma plugin window
+
+**Tasks**:
+
+1. Set up basic Figma plugin structure
+   - Create `manifest.json`
+   - Create `code.ts` (plugin main file)
+   - Configure build process for plugin
+
+2. Establish UI loading
+   - Configure Vite build for plugin environment
+   - Load React app in Figma plugin window
+   - Test that UI renders correctly
+
+3. Implement basic `postMessage` communication
+   - UI sends "hello" message to `code.ts`
+   - `code.ts` logs message and sends "world" back
+   - Verify two-way communication works
+
+**Success Criteria**: React app loads in Figma with working message bridge
+
+---
+
+### Phase 2: Implement Read-Only Sync
+
+**Goal**: Display real Figma variable data in the UI
+
+**Tasks**:
+
+1. Modify `figmaService.ts` for real communication
+   - Replace mock data with message sending
+   - Send request to `code.ts` for collections
+   - Handle async response
+
+2. Implement `code.ts` listener
+   - Listen for collection request messages
+   - Call `figma.variables.getLocalVariableCollectionsAsync()`
+   - Send results back to UI
+
+3. Update UI to handle real data
+   - Test with actual Figma files
+   - Handle edge cases (empty collections, different types)
+   - Add error handling
+
+**Success Criteria**: UI displays real Figma variable data correctly
+
+---
+
+### Phase 3: Implement Write Sync (Complete MVP)
+
+**Goal**: Edit tokens in UI and sync changes to Figma
+
+**Tasks**:
+
+1. Modify `updateVariable` in service
+   - Send update messages to `code.ts`
+   - Include token ID and new values
+   - Handle response
+
+2. Implement update logic in `code.ts`
+   - Find Figma variable by ID
+   - Update variable properties
+   - Confirm success/failure
+
+3. Test bi-directional sync
+   - Edit in UI → verify change in Figma Local Variables
+   - Edit in Figma → verify change reflects in UI (after sync)
+   - Handle conflicts and errors gracefully
+
+**Success Criteria**: Full bi-directional sync working reliably
+
+---
+
+### Phase 4: Add Enhancements
+
+**With core sync proven and stable, confidently add features:**
+
+#### 4.1 Token Management
+
+- Create new tokens
+- Delete existing tokens
+- Duplicate tokens
+- Rename tokens
+
+#### 4.2 Token Aliasing
+
+- Reference tokens to other tokens
+- Visual indication of aliases
+- Update alias chains correctly
+
+#### 4.3 Export Functionality
+
+- Export to CSS Custom Properties
+- Export to JSON format
+- Export to SCSS variables
+- Export to JavaScript/TypeScript
+
+#### 4.4 Additional Token Types
+
+- Shadow tokens
+- Gradient tokens
+- Grid tokens
+- Animation tokens
+
+#### 4.5 Advanced Features
+
+- Search and filter tokens
+- Bulk operations
+- Token usage tracking
+- Design system documentation
+
+---
+
+## Development Philosophy
+
+> **Think of the plugin integration as the foundation of a house.**  
+> It would be foolish to start decorating the walls and buying furniture before you've poured the concrete and built the frame.
+
+**Solidify the foundation first, and the rest of the construction will be much smoother and more successful.**
+
+---
+
+## Current Status
+
+### ✅ Completed
+
+- React + TypeScript + Vite setup
+- Component architecture
+- Mock service layer
+- Visual token cards (Color, Spacing, Typography, Radius)
+- Inline editing functionality
+- Dark theme UI with Tailwind CSS
+- Complete documentation
+
+### 🚧 In Progress
+
+- Repository setup on GitHub
+- Development environment configuration
+
+### 📋 Up Next
+
+- Phase 1: Plugin boilerplate
+- Phase 2: Read-only sync
+- Phase 3: Write sync (MVP complete)
+
+---
+
+## Timeline Estimates
+
+| Phase | Estimated Duration | Priority |
+|-------|-------------------|----------|
+| Phase 1: Plugin Boilerplate | 2-3 days | P0 - Critical |
+| Phase 2: Read-Only Sync | 3-5 days | P0 - Critical |
+| Phase 3: Write Sync (MVP) | 5-7 days | P0 - Critical |
+| Phase 4: Enhancements | Ongoing | P1 - Important |
+
+**Total to MVP**: 10-15 days of focused development
+
+---
+
+## Resources
+
+- [Figma Plugin API Documentation](https://www.figma.com/plugin-docs/)
+- [Figma Variables API](https://www.figma.com/plugin-docs/api/properties/figma-variables/)
+- [MCP Figma Server Guide](./README.md)
+- [Architecture Documentation](../../ARCHITECTURE.md)
