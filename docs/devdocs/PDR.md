@@ -282,4 +282,3 @@ The mock service layer has served its purpose for UI development. Now it's time 
 - [README.md](./README.md) - Figma MCP server guide
 - [ARCHITECTURE.md](../../ARCHITECTURE.md) - Technical architecture
 - [Figma Plugin API Docs](https://www.figma.com/plugin-docs/)
-
