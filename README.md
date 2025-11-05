@@ -135,10 +135,10 @@ See [ROADMAP.md](./docs/devdocs/ROADMAP.md) for the implementation strategy.
 
 ## Documentation
 
-- **[GUIDE.md](./GUIDE.md)** - Quick start guide and usage instructions
+- **[GUIDE.md](./docs/guides/GUIDE.md)** - Quick start guide and usage instructions
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Technical architecture deep dive
-- **[FIGMA_INTEGRATION.md](./FIGMA_INTEGRATION.md)** - Figma API integration guide
-- **[MCP_STATUS.md](./MCP_STATUS.md)** - MCP server configuration status
+- **[FIGMA_INTEGRATION.md](./docs/guides/FIGMA_INTEGRATION.md)** - Figma API integration guide
+- **[MCP_STATUS.md](./docs/setup/MCP_STATUS.md)** - MCP server configuration status
 - **[ROADMAP.md](./docs/devdocs/ROADMAP.md)** - Development roadmap and strategy
 
 ## Development Roadmap

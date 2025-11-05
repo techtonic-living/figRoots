@@ -77,11 +77,14 @@ figRoots-repo/
 │
 └── Documentation
     ├── README.md                   # Project overview
-    ├── GUIDE.md                    # Quick start guide
     ├── ARCHITECTURE.md             # Technical architecture
-    ├── FIGMA_INTEGRATION.md        # Figma API guide
-    ├── MCP_STATUS.md               # MCP setup status
-    └── SUMMARY.md                  # This file
+    ├── SUMMARY.md                  # This file
+    ├── docs/guides/
+    │   ├── GUIDE.md                # Quick start guide
+    │   └── FIGMA_INTEGRATION.md    # Figma API guide
+    └── docs/setup/
+        ├── MCP_SETUP.md            # MCP setup guide
+        └── MCP_STATUS.md           # MCP status report
 ```
 
 ---
@@ -137,16 +140,16 @@ See [ROADMAP.md](./docs/devdocs/ROADMAP.md) for detailed plan:
 
 ## Documentation Guide
 
-| Document                    | Purpose                              | Audience    |
-| --------------------------- | ------------------------------------ | ----------- |
-| **README.md**               | Project overview and quick reference | Everyone    |
-| **GUIDE.md**                | Usage instructions and how-tos       | End users   |
-| **ARCHITECTURE.md**         | Technical deep dive                  | Developers  |
-| **FIGMA_INTEGRATION.md**    | Figma API integration details        | Developers  |
-| **MCP_STATUS.md**           | MCP configuration status             | Developers  |
-| **docs/devdocs/ROADMAP.md** | Development strategy                 | Developers  |
-| **docs/devdocs/PDR.md**     | Product design rationale             | Product/Dev |
-| **docs/devdocs/README.md**  | Figma MCP server guide               | Developers  |
+| Document | Purpose | Audience |
+|----------|---------|----------|
+| **README.md** | Project overview and quick reference | Everyone |
+| **docs/guides/GUIDE.md** | Usage instructions and how-tos | End users |
+| **ARCHITECTURE.md** | Technical deep dive | Developers |
+| **docs/guides/FIGMA_INTEGRATION.md** | Figma API integration details | Developers |
+| **docs/setup/MCP_STATUS.md** | MCP configuration status | Developers |
+| **docs/devdocs/ROADMAP.md** | Development strategy | Developers |
+| **docs/devdocs/PDR.md** | Product design rationale | Product/Dev |
+| **docs/devdocs/README.md** | Figma MCP server guide | Developers |
 
 ---
 
@@ -249,7 +252,7 @@ The project includes Model Context Protocol (MCP) configuration:
 - ✅ Filesystem MCP
 - ✅ Microsoft Docs MCP
 
-See [MCP_STATUS.md](./MCP_STATUS.md) for configuration details.
+See [MCP_STATUS.md](./docs/setup/MCP_STATUS.md) for configuration details.
 
 ---
 
@@ -258,9 +261,9 @@ See [MCP_STATUS.md](./MCP_STATUS.md) for configuration details.
 ### Internal Documentation
 
 - [README.md](./README.md) - Start here
-- [GUIDE.md](./GUIDE.md) - Usage guide
+- [docs/guides/GUIDE.md](./docs/guides/GUIDE.md) - Usage guide
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical docs
-- [ROADMAP.md](./docs/devdocs/ROADMAP.md) - Development plan
+- [docs/devdocs/ROADMAP.md](./docs/devdocs/ROADMAP.md) - Development plan
 
 ### External Resources
 
