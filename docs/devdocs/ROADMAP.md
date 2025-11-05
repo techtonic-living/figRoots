@@ -56,11 +56,13 @@ Once we have a real data connection, we can:
 **Tasks**:
 
 1. Set up basic Figma plugin structure
+
    - Create `manifest.json`
    - Create `code.ts` (plugin main file)
    - Configure build process for plugin
 
 2. Establish UI loading
+
    - Configure Vite build for plugin environment
    - Load React app in Figma plugin window
    - Test that UI renders correctly
@@ -81,11 +83,13 @@ Once we have a real data connection, we can:
 **Tasks**:
 
 1. Modify `figmaService.ts` for real communication
+
    - Replace mock data with message sending
    - Send request to `code.ts` for collections
    - Handle async response
 
 2. Implement `code.ts` listener
+
    - Listen for collection request messages
    - Call `figma.variables.getLocalVariableCollectionsAsync()`
    - Send results back to UI
@@ -106,11 +110,13 @@ Once we have a real data connection, we can:
 **Tasks**:
 
 1. Modify `updateVariable` in service
+
    - Send update messages to `code.ts`
    - Include token ID and new values
    - Handle response
 
 2. Implement update logic in `code.ts`
+
    - Find Figma variable by ID
    - Update variable properties
    - Confirm success/failure
@@ -200,12 +206,12 @@ Once we have a real data connection, we can:
 
 ## Timeline Estimates
 
-| Phase | Estimated Duration | Priority |
-|-------|-------------------|----------|
-| Phase 1: Plugin Boilerplate | 2-3 days | P0 - Critical |
-| Phase 2: Read-Only Sync | 3-5 days | P0 - Critical |
-| Phase 3: Write Sync (MVP) | 5-7 days | P0 - Critical |
-| Phase 4: Enhancements | Ongoing | P1 - Important |
+| Phase                       | Estimated Duration | Priority       |
+| --------------------------- | ------------------ | -------------- |
+| Phase 1: Plugin Boilerplate | 2-3 days           | P0 - Critical  |
+| Phase 2: Read-Only Sync     | 3-5 days           | P0 - Critical  |
+| Phase 3: Write Sync (MVP)   | 5-7 days           | P0 - Critical  |
+| Phase 4: Enhancements       | Ongoing            | P1 - Important |
 
 **Total to MVP**: 10-15 days of focused development
 

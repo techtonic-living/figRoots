@@ -21,12 +21,12 @@
 
 ### Token Types Supported (4)
 
-| Type | Features | Visual Preview |
-|------|----------|----------------|
-| **Color** | HEX & RGB editing | Color swatch |
-| **Spacing** | px, rem, em units | Size box |
-| **Typography** | Font, size, weight, line height, letter spacing | Rendered text |
-| **Border Radius** | px, rem, % units | Rounded corners |
+| Type              | Features                                        | Visual Preview  |
+| ----------------- | ----------------------------------------------- | --------------- |
+| **Color**         | HEX & RGB editing                               | Color swatch    |
+| **Spacing**       | px, rem, em units                               | Size box        |
+| **Typography**    | Font, size, weight, line height, letter spacing | Rendered text   |
+| **Border Radius** | px, rem, % units                                | Rounded corners |
 
 ### UI Components (9)
 
@@ -137,28 +137,28 @@ See [ROADMAP.md](./docs/devdocs/ROADMAP.md) for detailed plan:
 
 ## Documentation Guide
 
-| Document | Purpose | Audience |
-|----------|---------|----------|
-| **README.md** | Project overview and quick reference | Everyone |
-| **GUIDE.md** | Usage instructions and how-tos | End users |
-| **ARCHITECTURE.md** | Technical deep dive | Developers |
-| **FIGMA_INTEGRATION.md** | Figma API integration details | Developers |
-| **MCP_STATUS.md** | MCP configuration status | Developers |
-| **docs/devdocs/ROADMAP.md** | Development strategy | Developers |
-| **docs/devdocs/PDR.md** | Product design rationale | Product/Dev |
-| **docs/devdocs/README.md** | Figma MCP server guide | Developers |
+| Document                    | Purpose                              | Audience    |
+| --------------------------- | ------------------------------------ | ----------- |
+| **README.md**               | Project overview and quick reference | Everyone    |
+| **GUIDE.md**                | Usage instructions and how-tos       | End users   |
+| **ARCHITECTURE.md**         | Technical deep dive                  | Developers  |
+| **FIGMA_INTEGRATION.md**    | Figma API integration details        | Developers  |
+| **MCP_STATUS.md**           | MCP configuration status             | Developers  |
+| **docs/devdocs/ROADMAP.md** | Development strategy                 | Developers  |
+| **docs/devdocs/PDR.md**     | Product design rationale             | Product/Dev |
+| **docs/devdocs/README.md**  | Figma MCP server guide               | Developers  |
 
 ---
 
 ## Technical Stack
 
-| Category | Technology | Version |
-|----------|-----------|---------|
-| **Framework** | React | 18.2.0 |
-| **Language** | TypeScript | 5.0.2 |
-| **Build Tool** | Vite | 4.4.5 |
-| **Styling** | Tailwind CSS | 3.3.3 |
-| **Package Manager** | npm | Latest |
+| Category            | Technology   | Version |
+| ------------------- | ------------ | ------- |
+| **Framework**       | React        | 18.2.0  |
+| **Language**        | TypeScript   | 5.0.2   |
+| **Build Tool**      | Vite         | 4.4.5   |
+| **Styling**         | Tailwind CSS | 3.3.3   |
+| **Package Manager** | npm          | Latest  |
 
 ---
 
@@ -205,6 +205,7 @@ See [PDR.md](./docs/devdocs/PDR.md) for detailed rationale.
 ### Immediate (Phase 2.1)
 
 1. Set up Figma plugin boilerplate
+
    - Create `manifest.json`
    - Create `code.ts` plugin file
    - Configure build for plugin environment
@@ -215,20 +216,20 @@ See [PDR.md](./docs/devdocs/PDR.md) for detailed rationale.
 
 ### Short-term (Phase 2.2)
 
-3. Implement read-only sync
+1. Implement read-only sync
    - Connect to real Figma Variables API
    - Display actual Figma data in UI
 
 ### Medium-term (Phase 2.3)
 
-4. Implement write sync
+1. Implement write sync
    - Edit tokens in UI
    - Sync changes to Figma
    - **MVP Complete**
 
 ### Long-term (Phase 3)
 
-5. Add enhancements
+1. Add enhancements
    - Token aliasing
    - Additional token types
    - Export functionality
@@ -273,14 +274,14 @@ See [MCP_STATUS.md](./MCP_STATUS.md) for configuration details.
 
 ## Project Timeline
 
-| Milestone | Status | Duration |
-|-----------|--------|----------|
-| Foundation & UI | ✅ Complete | Completed |
-| Repository Setup | ✅ Complete | 1 day |
-| Plugin Boilerplate | � Planned | 2-3 days |
-| Read-Only Sync | 📋 Planned | 3-5 days |
-| Write Sync (MVP) | 📋 Planned | 5-7 days |
-| Enhancements | 📋 Planned | Ongoing |
+| Milestone          | Status      | Duration  |
+| ------------------ | ----------- | --------- |
+| Foundation & UI    | ✅ Complete | Completed |
+| Repository Setup   | ✅ Complete | 1 day     |
+| Plugin Boilerplate | � Planned   | 2-3 days  |
+| Read-Only Sync     | 📋 Planned  | 3-5 days  |
+| Write Sync (MVP)   | 📋 Planned  | 5-7 days  |
+| Enhancements       | 📋 Planned  | Ongoing   |
 
 **Estimated time to MVP**: 10-15 days of focused development
 
