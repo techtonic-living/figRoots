@@ -1,0 +1,24 @@
+{
+  "name": "Figma Design Token Sync",
+  "version": "1.0.0",
+  "description": "A web-based tool to bi-directionally sync design tokens and variables between Figma variables panel and visual frames",
+  "author": "Techtonic",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jesseryansmith/monorepo"
+  },
+  "features": [
+    "Visual token management",
+    "Multiple collections (Colors, Spacing, Typography, Border Radius)",
+    "Inline editing with real-time preview",
+    "Bi-directional Figma sync",
+    "Modern dark UI with Tailwind CSS"
+  ],
+  "techStack": {
+    "framework": "React",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS",
+    "buildTool": "Vite"
+  }
+}
